@@ -49,7 +49,7 @@ const Hero = () => {
             <a className="btn primary-btn" href="#projects">
               View Projects <FaArrowRight aria-hidden="true" />
             </a>
-            <a className="btn secondary-btn" href="/assets/Umaid_AI_CV.pdf" target="_blank" rel="noreferrer">
+            <a className="btn secondary-btn" href="/assets/Umed_Ali_Keerio_AIML_CV.pdf" target="_blank" rel="noreferrer">
               Download CV <FaDownload aria-hidden="true" />
             </a>
           </motion.div>
