@@ -1,0 +1,211 @@
+.app-container {
+  position: relative;
+  isolation: isolate;
+}
+
+.app-container::before,
+.app-container::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.app-container::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 78%);
+  animation: gridDrift 18s linear infinite;
+}
+
+.app-container::after {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(86, 214, 201, 0.11), transparent 24rem),
+    radial-gradient(circle at 82% 36%, rgba(124, 140, 255, 0.08), transparent 26rem),
+    radial-gradient(circle at 48% 78%, rgba(248, 184, 78, 0.055), transparent 22rem);
+  opacity: 0.78;
+  animation: globalLightField 16s ease-in-out infinite alternate;
+}
+
+.site-header {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: min(1120px, calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid rgba(86, 214, 201, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(86, 214, 201, 0.11), rgba(255, 255, 255, 0.045) 34%, rgba(248, 184, 78, 0.06)),
+    rgba(8, 10, 15, 0.84);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 22px 65px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  min-width: 152px;
+  min-height: 44px;
+  padding-right: 12px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-weight: 850;
+  letter-spacing: 0;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-mark:hover {
+  color: var(--text-primary);
+}
+
+.brand-mark span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--accent-gradient);
+  background-size: 200% 200%;
+  color: #091016;
+  font-weight: 950;
+  animation: gradientMove 5s ease-in-out infinite;
+}
+
+.brand-mark strong {
+  font-size: 0.96rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-nav a {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text-primary);
+  background: rgba(86, 214, 201, 0.1);
+}
+
+.header-socials {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.header-socials a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.header-socials a:hover {
+  transform: translateY(-3px);
+  color: var(--accent-color);
+  border-color: rgba(86, 214, 201, 0.36);
+  background: rgba(86, 214, 201, 0.08);
+}
+
+@keyframes globalLightField {
+  from {
+    transform: translate3d(-1%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(1%, 2%, 0) scale(1.035);
+  }
+}
+
+@keyframes gridDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 56px 56px, 56px 56px;
+  }
+}
+
+@keyframes gradientMove {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    top: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .brand-mark {
+    min-width: 42px;
+    padding-right: 0;
+  }
+
+  .brand-mark strong {
+    display: none;
+  }
+
+  .brand-mark span {
+    width: 38px;
+    height: 38px;
+  }
+
+  .site-nav {
+    max-width: calc(100% - 92px);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
+    padding: 9px 9px;
+    font-size: 0.82rem;
+  }
+
+  .header-socials a {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-socials a:nth-child(n+3) {
+    display: none;
+  }
+}

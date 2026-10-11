@@ -1,0 +1,139 @@
+.about-section {
+  padding-top: 6rem;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.about-card {
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(86, 214, 201, 0.1), transparent 42%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.about-card:hover::before {
+  opacity: 1;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(86, 214, 201, 0.26);
+}
+
+.card-kicker {
+  display: inline-block;
+  color: var(--accent-warm);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.about-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.education-item h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.education-item .institution {
+  color: var(--accent-warm);
+  font-size: 0.98rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.education-item .date {
+  color: var(--accent-color);
+  font-size: 0.88rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.education-item p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.cert-list {
+  list-style-type: none;
+}
+
+.cert-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.cert-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  color: var(--accent-color);
+  background: var(--accent-color);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skills-intro {
+  color: var(--text-secondary);
+  margin-bottom: 1.4rem;
+  font-size: 0.96rem;
+}
+
+.skill-badge {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  cursor: default;
+  transition: transform 0.2s ease, background 0.3s ease, border-color 0.2s ease;
+}
+
+.skill-badge:hover {
+  transform: translateY(-3px);
+  background: rgba(86, 214, 201, 0.11);
+  border-color: rgba(86, 214, 201, 0.3);
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+}
